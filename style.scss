@@ -1,0 +1,92 @@
+// Variabelen
+$primary-color: #333;
+$secondary-color: #444;
+$text-color: white;
+$padding: 15px;
+$tablet: 768px;
+
+// Navigatie
+nav {
+    background: $primary-color;
+    font-family: Arial, sans-serif;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        border-bottom: 1px solid $secondary-color;
+    }
+
+    a {
+        color: $text-color;
+        text-decoration: none;
+        padding: $padding 20px;
+        display: block;
+
+        // Gebruik van &
+        &:hover {
+            background: $secondary-color;
+        }
+
+      &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px black;
+      }
+    }
+}
+// Hamburger icon
+label {
+    display: none;
+    padding: $padding;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+// Desktop
+@media (min-width: $tablet) {
+
+    ul {
+        display: flex;
+    }
+
+    li {
+        border: none;
+    }
+}
+
+// Mobiel
+@media (max-width: 767px) {
+
+    label {
+        display: block;
+        color: $text-color;
+
+        &::before {
+            content: "☰";
+            font-size: 24px;
+        }
+    }
+
+    ul {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    input:checked ~ ul {
+        max-height: 500px;
+    }
+
+    input:checked + label {
+
+        &::before {
+            content: "✕";
+        }
+    }
+}
